@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vote App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Realtime Vote Website</h2>
+
+    <!-- <div id="vote-area">
+      <button class="vote-btn" id="vote-1">Vote 1</button>
+      <button class="vote-btn" id="vote-2">Vote 2</button>
+      <button class="vote-btn" id="vote-3">Vote 3</button>
+    </div> -->
+
+    <div id="vote-area">
+      <button class="vote-btn" id="vote-1" style="--color: #1e9bff">
+        <span>💙</span>
+        <span>💙</span>
+        <span>💙</span>
+        <span>💙</span>
+        Vote 1
+      </button>
+      <button class="vote-btn" id="vote-2" style="--color: #ff1867">
+        <span>❤️</span>
+        <span>❤️</span>
+        <span>❤️</span>
+        <span>❤️</span>
+        Vote 2
+      </button>
+      <button class="vote-btn" id="vote-3" style="--color: #6eff3e">
+        <span>💚</span>
+        <span>💚</span>
+        <span>💚</span>
+        <span>💚</span>
+        Vote 3
+      </button>
+    </div>
+
+    <div id="vote-result"></div>
+
+    <script src="script.js"></script>
+    <!-- Include Socket.IO client library -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+      // Connect to the server
+      const socket = io.connect("http://localhost:3000");
+
+      // Handle button click event
+      document.getElementById("vote-1").addEventListener("click", () => {
+        // Send vote event to the server
+        socket.emit("vote", 1);
+      });
+
+      // Add listener for updated votes
+      socket.on("updateVotes", (voteCount) => {
+        // Update the UI with the new vote counts
+        updateVoteResult(voteCount);
+      });
+
+      // Function to update the UI with vote counts
+      function updateVoteResult(voteCount) {
+        // Update the UI with the new vote counts
+        // (You can implement this function based on your HTML structure)
+      }
+    </script>
+  </body>
+</html>
